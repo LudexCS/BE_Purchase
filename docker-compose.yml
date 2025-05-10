@@ -1,0 +1,6 @@
+services:
+  purchase:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: gomdadi/purchase:latest
