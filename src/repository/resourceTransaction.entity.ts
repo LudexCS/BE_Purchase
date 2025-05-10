@@ -12,3 +12,15 @@ export async function saveResourceTransaction(resourceTransaction: ResourceTrans
         throw new Error('Failed to save resource transaction to database');
     }
 }
+
+export async function isExistResourceTransaction(buyerId: number, resourceId: number): Promise<boolean> {
+    try {
+        const resourceTransaction = await resourceTransactionRepo.findOne({
+            where: { buyerId, resourceId }
+        });
+        return !!resourceTransaction;
+    } catch (error) {
+        console.error('Failed to check resource transaction existence:', error);
+        throw new Error('Failed to check resource transaction in database');
+    }
+}

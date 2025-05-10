@@ -12,3 +12,15 @@ export async function savePurchasedGame(purchasedGame: PurchasedGame) {
         throw new Error('Failed to save purchased game to database');
     }
 }
+
+export async function isExistPurchasedGame(userId: number, gameId: number): Promise<boolean> {
+    try {
+        const purchasedGame = await purchasedGameRepo.findOne({
+            where: { userId, gameId }
+        });
+        return !!purchasedGame;
+    } catch (error) {
+        console.error('Failed to check purchased game existence:', error);
+        throw new Error('Failed to check purchased game in database');
+    }
+}

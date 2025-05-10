@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package purchase_history;
+
+message CheckPurchaseRequest {
+  int32 userId = 1;
+  int32 gameId = 2;
+}
+
+message CheckResponse {
+  bool isTransacted = 1;
+}
+
+message CheckTransactionRequest {
+    int32 userId = 1;
+    int32 resourceId = 2;
+}
+
+service PurchaseHistoryService {
+    rpc CheckPurchase(CheckPurchaseRequest) returns (CheckResponse);
+    rpc CheckTransaction(CheckTransactionRequest) returns (CheckResponse);
+}

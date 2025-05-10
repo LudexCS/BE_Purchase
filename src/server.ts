@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import app from './app';
 import AppDataSource from './config/mysql.config';
+import {startGrpcServer} from "./grpc/purchase_history.server";
 
 // .env 환경변수 사용 setting
 dotenv.config();
@@ -13,6 +14,8 @@ async function connectAndStart() {
         try {
             await AppDataSource.initialize();
             console.log('📦 DB connected');
+
+            await startGrpcServer();
 
             app.listen(PORT, () => {
                 console.log(`UserAccount REST API running on port ${PORT}`);
