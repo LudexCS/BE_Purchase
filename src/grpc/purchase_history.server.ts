@@ -16,7 +16,7 @@ const purchaseHistoryServiceImpl: IPurchaseHistoryServiceServer = {
             callback(null, response);
         } catch (error) {
             console.error("checkPurchase error:", error);
-            callback(error, null);
+            callback(error as Error, null);
         }
     },
     checkTransaction: async (call, callback) => {
@@ -30,7 +30,7 @@ const purchaseHistoryServiceImpl: IPurchaseHistoryServiceServer = {
             callback(null, response);
         } catch (error) {
             console.error("checkTransaction error:", error);
-            callback(error, null);
+            callback(error as Error, null);
         }
     }
 };
