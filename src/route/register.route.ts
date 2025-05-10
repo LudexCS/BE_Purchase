@@ -4,6 +4,11 @@ import {registerPurchasedGameControl, registerResourceTransactionControl} from "
 /**
  * @swagger
  * components:
+ *   securitySchemes:
+ *     bearerAuth:
+ *       type: http
+ *       scheme: bearer
+ *       bearerFormat: JWT
  *   schemas:
  *     RegisterPurchasedGameDto:
  *       type: object
@@ -28,6 +33,8 @@ const router: Router = Router();
  * @swagger
  * /api/protected/register/game/purchase:
  *   post:
+ *     security:
+ *       - bearerAuth: []
  *     summary: Register a purchased game
  *     requestBody:
  *       required: true
@@ -61,6 +68,8 @@ router.post('/game/purchase', async (req, res) => {
  * @swagger
  * /api/protected/register/resource/contract:
  *   post:
+ *     security:
+ *       - bearerAuth: []
  *     summary: Register a resource transaction
  *     requestBody:
  *       required: true
