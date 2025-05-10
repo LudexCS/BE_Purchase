@@ -77,7 +77,7 @@ router.post('/game/purchase', async (req, res) => {
  *         description: Server Error
  */
 
-router.post('/resource/contract/:', async (req, res) => {
+router.post('/resource/contract', async (req, res) => {
     try {
         await registerResourceTransactionControl(req);
         res.status(201).json({ message: "Registered Resource Transaction Successfully" });
