@@ -6,7 +6,7 @@ export interface RegisterPurchasedGameDto {
     gameId: number;
     pricePaid: string;
     isNftIssued: boolean;
-    purchaseId: bigint;
+    purchaseId: string;
 }
 
 export interface RegisterResourceTransactionDto {
@@ -21,7 +21,7 @@ export function toPurchasedGameEntity(dto: RegisterPurchasedGameDto): PurchasedG
     entity.gameId = dto.gameId;
     entity.pricePaid = dto.pricePaid;
     entity.isNftIssued = dto.isNftIssued;
-    entity.purchaseId = dto.purchaseId;
+    entity.purchaseId = BigInt(dto.purchaseId);
     entity.purchasedAt = new Date();
     return entity;
 }
