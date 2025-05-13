@@ -21,7 +21,7 @@ export function toPurchasedGameEntity(dto: RegisterPurchasedGameDto): PurchasedG
     entity.gameId = dto.gameId;
     entity.pricePaid = dto.pricePaid;
     entity.isNftIssued = dto.isNftIssued;
-    entity.purchaseId = BigInt(dto.purchaseId);
+    entity.purchaseId = dto.purchaseId;
     entity.purchasedAt = new Date();
     return entity;
 }

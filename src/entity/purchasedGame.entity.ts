@@ -17,8 +17,8 @@ export class PurchasedGame {
     @Column({ name: "is_nft_issued", type: "tinyint", width: 1, default: false })
     isNftIssued: boolean;
 
-    @Column({ name: "purchase_id", type: "bigint", default: 0 })
-    purchaseId: bigint;
+    @Column({ name: "purchase_id", type: "varchar", length: 255 })
+    purchaseId: string;
 
     @CreateDateColumn({ name: "purchased_at", type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
     purchasedAt: Date;
