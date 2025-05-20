@@ -71,6 +71,7 @@ router.post('/game/purchase', async (req, res) => {
  *     security:
  *       - bearerAuth: []
  *     summary: Register a resource transaction
+ *
  *     requestBody:
  *       required: true
  *       content:

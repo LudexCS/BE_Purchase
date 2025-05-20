@@ -3,6 +3,7 @@ import {getUserIdByEmail} from "../grpc/auth.client";
 import {RegisterPurchasedGameDto, RegisterResourceTransactionDto} from "../dto/register.dto";
 import {registerPurchasedGame, registerResourceTransaction} from "../service/register.service";
 import {getUserIdByResource} from "../grpc/resource.client";
+import {increaseDownloadCount} from "../grpc/downloadCount.client";
 
 export async function registerPurchasedGameControl(req: Request) {
     const email = req.user;
@@ -11,6 +12,7 @@ export async function registerPurchasedGameControl(req: Request) {
     const purchasedGameDto: RegisterPurchasedGameDto = req.body;
     purchasedGameDto.userId = userId;
     await registerPurchasedGame(purchasedGameDto);
+    await increaseDownloadCount(purchasedGameDto.gameId);
 }
 
 export async function registerResourceTransactionControl(req: Request) {
