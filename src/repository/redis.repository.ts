@@ -29,7 +29,7 @@ export const isPaymentInfoEqual = async (orderId: string, amount: number): Promi
         if (!storedAmount) return false;
         console.log("storedAmount", storedAmount);
         console.log("inputAmount", amount);
-        return Number(storedAmount) === amount;
+        return Number(storedAmount) === Number(amount);
     } catch (error) {
         console.error(`🔴 Redis 토큰 비교 실패: ${key}`, error);
         throw new Error('Failed to compare payment information');
