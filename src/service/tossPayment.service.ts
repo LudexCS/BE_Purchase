@@ -7,7 +7,8 @@ export async function saveBeforePaymentInfo(beforePaymentDto: BeforePaymentDto) 
 }
 
 export async function confirmPayment(confirmPaymentDto: ConfirmPaymentDto) {
-    const encryptedApiSecretKey = process.env.TOSS_PAYMENT_API_SECRET_KEY as string;
+    const tossPaymentApiSecretKey = process.env.TOSS_PAYMENT_API_SECRET_KEY as string;
+    const encryptedApiSecretKey = "Basic " + Buffer.from(tossPaymentApiSecretKey + ":").toString("base64");
     const { paymentKey, orderId, amount } = confirmPaymentDto;
 
     // 결제 과정에서 금액이 변경되지 않았는지 확인.
