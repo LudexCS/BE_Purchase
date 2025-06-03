@@ -19,7 +19,7 @@ const options = {
     },
     servers: [
       {
-        url: 'http://api.uosludex.com/purchase',
+        url: 'https://api.uosludex.com/purchase',
         description: 'API 서버'
       }
     ],
