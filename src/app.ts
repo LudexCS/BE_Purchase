@@ -14,11 +14,11 @@ app.use(cors({
 }));
 
 // Swagger UI 설정
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs, swaggerUiOptions));
+app.use('/purchase/api-docs', swaggerUi.serve, swaggerUi.setup(specs, swaggerUiOptions));
 
 // middleware
-app.use('/api/protected', jwtGuard);
-app.use('/api/protected/register', registerRouter);
-app.use('/api/protected/payment', tossPaymentRoute);
+app.use('/purchase/api/protected', jwtGuard);
+app.use('/purchase/api/protected/register', registerRouter);
+app.use('/purchase/api/protected/payment', tossPaymentRoute);
 
 export default app;
