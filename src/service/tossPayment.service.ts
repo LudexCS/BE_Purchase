@@ -96,5 +96,5 @@ export async function delegatedPurchaseByWeb3(confirmPaymentDto: ConfirmPaymentD
 function generateOwnerId(seed: string): bigint {
     const hash = crypto.createHash("sha256").update(seed).digest("hex");
     // Take the first 16 bytes (128 bits) of the hash and convert to bigint
-    return BigInt("0x" + hash.slice(0, 32));
+    return BigInt("0x" + hash.slice(0, 16));
 }
