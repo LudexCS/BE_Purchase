@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package delegatePurchase;
+
+message PurchaseRequest {
+    string itemId = 1;
+    string ownerId = 2;
+}
+
+message PurchaseResponse {
+    string purchaseId = 1;
+}
+
+service PurchaseService {
+    rpc DelegatedPurchase(PurchaseRequest) returns (PurchaseResponse);
+}

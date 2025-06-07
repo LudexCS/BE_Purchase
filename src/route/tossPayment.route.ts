@@ -21,6 +21,9 @@ router.post('/before', async (req, res) => {
 router.post('/confirm', async (req, res) => {
     try {
         const confirmPaymentDto: ConfirmPaymentDto = req.body;
+        const email = req.user;
+        if (!email) throw new Error('Invalid user');
+        confirmPaymentDto.email = email;
         const { response, result } = await confirmPaymentControl(confirmPaymentDto);
         res.status(response.status).json(result);
     } catch (error) {

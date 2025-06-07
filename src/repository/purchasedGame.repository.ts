@@ -6,9 +6,14 @@ const purchasedGameRepo: Repository<PurchasedGame> = AppDataSource.getRepository
 
 export async function savePurchasedGame(purchasedGame: PurchasedGame) {
     try {
-        await purchasedGameRepo.save(purchasedGame);
+        return (await purchasedGameRepo.save(purchasedGame)).id;
     } catch (error) {
-        console.error('Failed to save purchased game:', error);
+        if (error instanceof Error) {
+            console.error('Failed to save purchased game:', error.message);
+        }
+        else {
+            console.error('Failed to save purchased game: Unknown Error');
+        }
         throw new Error('Failed to save purchased game to database');
     }
 }
