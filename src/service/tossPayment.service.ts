@@ -7,6 +7,7 @@ import {PurchasedGame} from "../entity/purchasedGame.entity";
 import {savePurchasedGame} from "../repository/purchasedGame.repository";
 import {parseTossPaymentMethod, parseTossPaymentStatus, TossPayment} from "../entity/tossPayment.entity";
 import {saveTossPayment} from "../repository/tossPayment.repository";
+import {increaseDownloadCount} from "../grpc/downloadCount.client";
 
 export async function saveBeforePaymentInfo(beforePaymentDto: BeforePaymentDto) {
     const {orderId, amount} = beforePaymentDto;
@@ -78,6 +79,8 @@ export async function confirmPayment(confirmPaymentDto: ConfirmPaymentDto) {
         tossPayment.approvedAt = result.approvedAt;
         tossPayment.requestedAt = result.requestedAt;
         await saveTossPayment(tossPayment);
+
+        await increaseDownloadCount(confirmPaymentDto.gameId);
 
         return { response, result};
     });

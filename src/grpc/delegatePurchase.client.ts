@@ -18,7 +18,7 @@ export const requestDelegatedPurchase = (itemId: string, ownerId: string): Promi
 
         client.delegatedPurchase(request, (err, res) => {
             if (err) {
-                console.error('gRPC Error:', err);
+                console.error('gRPC Error:', err.message);
                 return reject(err);
             }
             resolve(res.getPurchaseid());

@@ -16,7 +16,7 @@ export const authAccount = (jwt: string): Promise<string> => {
 
         client.authByJWT(request, (err, res) => {
             if (err) {
-                console.error('gRPC Error:', err);
+                console.error('gRPC Error:', err.message);
                 return reject(err);
             }
             resolve(res.getEmail());
@@ -31,7 +31,7 @@ export const getUserIdByEmail = (email: string): Promise<number> => {
 
         client.getUserIdByEmail(request, (err, res) => {
             if (err) {
-                console.error('gRPC Error:', err);
+                console.error('gRPC Error:', err.message);
                 return reject(err);
             }
             resolve(res.getUserId());

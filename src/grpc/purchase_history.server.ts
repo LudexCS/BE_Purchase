@@ -15,7 +15,12 @@ const purchaseHistoryServiceImpl: IPurchaseHistoryServiceServer = {
             response.setIstransacted(result);
             callback(null, response);
         } catch (error) {
-            console.error("checkPurchase error:", error);
+            if (error instanceof Error) {
+                console.error("checkPurchase error:", error.message);
+            }
+            else {
+                console.error("checkPurchase error: Unknown Error");
+            }
             callback(error as Error, null);
         }
     },
@@ -29,7 +34,12 @@ const purchaseHistoryServiceImpl: IPurchaseHistoryServiceServer = {
             response.setIstransacted(result);
             callback(null, response);
         } catch (error) {
-            console.error("checkTransaction error:", error);
+            if (error instanceof Error) {
+                console.error("checkTransaction error:", error.message);
+            }
+            else {
+                console.error("checkTransaction error: Unknown Error");
+            }
             callback(error as Error, null);
         }
     }
