@@ -5,6 +5,7 @@ import swaggerUi from 'swagger-ui-express';
 import { specs, swaggerUiOptions } from './config/swagger.config';
 import registerRouter from './route/register.route';
 import tossPaymentRoute from './route/tossPayment.route';
+import checkHistoryRoute from "./route/checkHistory.route";
 
 const app : Express = express();
 app.use(express.json());
@@ -20,5 +21,6 @@ app.use('/purchase/api-docs', swaggerUi.serve, swaggerUi.setup(specs, swaggerUiO
 app.use('/purchase/api/protected', jwtGuard);
 app.use('/purchase/api/protected/register', registerRouter);
 app.use('/purchase/api/protected/payment', tossPaymentRoute);
+app.use('/purchase/api/protected/check', checkHistoryRoute);
 
 export default app;
